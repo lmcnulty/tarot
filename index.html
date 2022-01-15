@@ -234,12 +234,12 @@ function makeCard(deck, suite, num) {
 
 	let frontImg = document.createElement('img');
 	let imgUrl = [deck, suite, num <= 9 ? '0' + num : num].join('/') + '-small.jpg';
-	frontImg.title = meanings[deck][suite][num];
+	frontImg.title = meanings[deck][suite][num - 1];
 	frontImg.src = imgUrl;
 	frontImg.setAttribute('draggable', false);
 	
 	let backImg = document.createElement('img');
-	backImg.src = [deck, 'back.jpg'].join('/');
+	backImg.src = [deck, 'back-small.jpg'].join('/');
 	backImg.setAttribute('draggable', false);
 
 	card.appendChild(front);
