@@ -28,7 +28,7 @@ body {
 	background: #f7dcca;
 }
 .back {
-	background: #f7dcca;
+	background: #31728c;
 }
 .front, .back {
 	position: absolute;
@@ -286,7 +286,7 @@ zoom();
 function drawCards(num, majorOnly) {
 
 	let deck = (majorOnly ? ['major'] : ['swords', 'wands', 'cups', 'pentacles', 'major'])
-	.map(suite => [...Array(13).keys()].map(num => makeCard('Rider-Waite Smith 1920s', suite, num + 1 )))
+	.map(suite => [...Array(13).keys()].map(num => ['Rider-Waite Smith 1920s', suite, num + 1 ]))
 	.reduce((cur, acc) => acc.concat(cur), [])
 
 	let deal = []
@@ -296,7 +296,7 @@ function drawCards(num, majorOnly) {
 			deal.push(i);
 		}
 	}
-	deal = deal.map(i => deck[i]);
+	deal = deal.map(i => makeCard(deck[i][0], deck[i][1], deck[i][2]));
 	for (let i = 0; i < deal.length; i++) {
 		if (Math.random() > .75) {
 			deal[i].classList.add('inverted');
