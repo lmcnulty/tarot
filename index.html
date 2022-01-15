@@ -233,7 +233,7 @@ function makeCard(deck, suite, num) {
 	back.classList.add('back');
 
 	let frontImg = document.createElement('img');
-	let imgUrl = [deck, suite, num <= 9 ? '0' + num : num].join('/') + '.jpg';
+	let imgUrl = [deck, suite, num <= 9 ? '0' + num : num].join('/') + '-small.jpg';
 	frontImg.title = meanings[deck][suite][num];
 	frontImg.src = imgUrl;
 	frontImg.setAttribute('draggable', false);
@@ -286,7 +286,7 @@ zoom();
 function drawCards(num, majorOnly) {
 
 	let deck = (majorOnly ? ['major'] : ['swords', 'wands', 'cups', 'pentacles', 'major'])
-	.map(suite => [...Array(13).keys()].map(num => makeCard('Rider-Waite Smith 1920s', suite, num )))
+	.map(suite => [...Array(13).keys()].map(num => makeCard('Rider-Waite Smith 1920s', suite, num + 1 )))
 	.reduce((cur, acc) => acc.concat(cur), [])
 
 	let deal = []
