@@ -1,17 +1,15 @@
 <!doctype html>
 <meta charset='utf-8'>
 <title>Tarot</title>
+<link rel="shortcut icon" href="icon.jpg" />
+
 
 <style>
-:root {
-	--card-height: 44rem;
-	--card-width: 10.5rem;
-}
 * {
 	box-sizing: border-box;
 }
 body {
-	background: #444;
+	background: #333;
 }
 .card {
 	border-radius: calc(var(--card-height) / 30);
@@ -65,7 +63,9 @@ body {
 
 .toolbar {
 	height: 2em;
-	background: linear-gradient(#efefef, #ededed);
+	background: var(--surface-background);
+	color: var(--surface-color);
+	border-bottom: 1px solid var(--surface-border);
 	display: flex;
 	align-items: center;
 	padding-left: .25em;
@@ -189,6 +189,239 @@ html, body {
 
 </style>
 
+<!-- Widgets -->
+<style>
+
+:root {
+	--surface-background: #454545;
+	--surface-color: white;
+	--surface-border: #111;
+
+	--expression-background: #333;
+	--expression-color: #fff;
+	--expression-border: 1px solid #111;
+	--expression-padding: 2px 6px 2px 6px;
+	--expression-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, .25);
+
+	--depression-background: #222;
+	--depression-color: #fff;
+	--depression-border: 1px solid #fff;
+
+	--impression-background: #666;
+	--impression-color: #fff;
+	--impression-border: 1px solid #111;
+	--impression-padding: 4px;
+	--impression-box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, .25);
+
+	--accent-background: #4397e6;
+
+	--base-border-radius: 6px;
+}
+
+/* Button-like things*/
+
+button, input[type=submit], input[type=button], input[type=reset] {
+	background: var(--expression-background);
+	color: var(--expression-color);
+	border: var(--expression-border);
+	padding: var(--expression-padding);
+	border-radius: var(--base-border-radius);
+	box-shadow: var(--expression-box-shadow);
+}
+button:active, input[type=submit]:active, input[type=button]:active, input[type=reset]:active {
+	background: var(--depression-background);
+	color: var(--depression-color);
+	border: var(--depression-border);
+}
+
+input[type=file]::file-selector-button {
+	background: var(--expression-background);
+	color: var(--expression-color);
+	border: var(--expression-border);
+	padding: var(--expression-padding);
+	box-shadow: var(--expression-box-shadow);
+	border-radius: var(--base-border-radius);
+}
+input[type=file]::file-selector-button:active {
+	background: var(--depression-background);
+	color: var(--depression-color);
+	border: var(--depression-border);
+}
+input[type=file]::-webkit-file-upload-button {
+	background: var(--expression-background);
+	color: var(--expression-color);
+	border: var(--expression-border);
+	padding: var(--expression-padding);
+	box-shadow: var(--expression-box-shadow);
+	border-radius: var(--base-border-radius);
+}
+input[type=file]::-webkit-file-upload-button:active {
+	background: var(--depression-background);
+	color: var(--depression-color);
+	border: var(--depression-border);
+}
+
+
+
+/* Text-like things */
+
+textarea,
+input[type=email],
+input[type=hidden],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime-local],
+input[type=url],
+input[type=week] {
+	color: var(--impression-color);
+	background: var(--impression-background);
+	border:var(--impression-border);
+	padding: var(--impression-padding);
+	border-radius: var(--base-border-radius);
+	box-shadow: var(--impression-box-shadow);
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+
+/* Check boxes */
+
+input[type=checkbox], input[type=radio] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: var(--impression-background);
+	border: var(--impression-border);
+	width: 1em;
+	height: 1em;
+	border-radius: calc(var(--base-border-radius) / 2);
+	box-shadow: var(--impression-box-shadow);
+}
+input[type=checkbox]:checked, input[type=radio]:checked {
+	background: radial-gradient(
+		var(--accent-background) 0%, 
+		var(--accent-background) 40%, 
+		var(--impression-background) 100%
+	);
+}
+input[type=radio] {
+	border-radius: 50%;
+}
+
+/* Range */
+
+input[type=range] {
+	-webkit-appearance: none;
+	background: none;
+}
+input[type=range]::-webkit-slider-runnable-track  {
+	border: var(--impression-border);
+	background: var(--impression-background);
+	height: .5em;
+	border-radius: var(--base-border-radius);
+}
+input[type=range]::-moz-range-track {
+	border: var(--impression-border);
+	background: var(--impression-background);
+	height: .5em;
+	border-radius: var(--base-border-radius);
+}
+input[type=range]::-webkit-slider-thumb {
+	background: var(--expression-background);
+	border: var(--expression-border);
+	box-shadow: var(--expression-box-shadow);
+	-webkit-appearance: none;
+	height: 1em;
+	margin-top: calc(-.25em - 1px);
+	width: 1em;
+	border-radius: 50%;
+}
+input[type=range]::-moz-range-thumb {
+	background: var(--expression-background);
+	border: var(--expression-border);
+	box-shadow: var(--expression-box-shadow);
+	-webkit-appearance: none;
+	height: 1em;
+	margin-top: calc(-.25em - 1px);
+	width: 1em;
+	border-radius: 50%;
+}
+
+
+/* Misc */
+
+input[type=file] {
+	color: var(--impression-color);
+	background: var(--impression-background);
+	border:var(--impression-border);
+	padding: var(--impression-padding);
+	border-radius: var(--base-border-radius);
+
+	box-shadow: var(--impression-box-shadow);
+}
+input[type=color] {
+	background: var(--impression-background);
+	color: var(--impression-color);
+	border: var(--impression-border);
+	padding: var(--impression-padding);
+	border-radius: var(--base-border-radius);
+
+	box-shadow: var(--impression-box-shadow);
+}
+select:not([multiple]) {
+	color: var(--impression-color);
+	border: var(--impression-border);
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	padding: var(--impression-padding);
+
+    padding-right: 1.25em;
+    appearance: none;
+    position: relative;
+	background-color: var(--impression-background);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='10px' width='15px'%3E%3Ctext x='0' y='10' fill='gray'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 1em .5em;
+    background-position: right center;
+    background-clip: border-box;
+    -moz-background-clip: border-box;
+    -webkit-background-clip: border-box;
+	border-radius: var(--base-border-radius);
+	box-shadow: var(--impression-box-shadow);
+}
+select[multiple] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	color: var(--impression-color);
+	background: var(--impression-background);
+	border:var(--impression-border);
+	padding: var(--impression-padding);
+	scrollbar-width: none;  /* Firefox */
+	border-radius: var(--base-border-radius);
+	box-shadow: var(--impression-box-shadow);
+}
+.select[multiple]::-webkit-scrollbar {
+  display: none;
+}
+</style>
+
 <div class="toolbar">
 
 	<span>
@@ -236,6 +469,7 @@ function makeCard(deck, suite, num) {
 	let imgUrl = [deck, suite, num <= 9 ? '0' + num : num].join('/') + '-small.jpg';
 	frontImg.title = meanings[deck][suite][num - 1];
 	frontImg.src = imgUrl;
+	frontImg.srcset = `${imgUrl} 400w, ${imgUrl.replace('-small', '')} 1000w`;
 	frontImg.setAttribute('draggable', false);
 	
 	let backImg = document.createElement('img');
