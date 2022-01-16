@@ -509,8 +509,6 @@ function makeCard(deck, suite, num) {
 
 function zoom() {
 	let scale = $('#zoom').value / 100;
-	console.log(scale);
-	//$('.spread').style.transform = `scale(${scale})`;
 	document.documentElement.style.setProperty('--card-height', `${18.25*scale}rem`);
 	document.documentElement.style.setProperty('--card-width', `${10.5*scale}rem`);
 }
@@ -519,9 +517,13 @@ zoom();
 
 function drawCards(num, majorOnly) {
 
-	let deck = (majorOnly ? ['major'] : ['swords', 'wands', 'cups', 'pentacles', 'major'])
-	.map(suite => [...Array(13).keys()].map(num => ['Rider-Waite Smith 1920s', suite, num + 1 ]))
-	.reduce((cur, acc) => acc.concat(cur), [])
+	let deck = 
+	[...Array(22).keys()].map(num => ['Rider-Waite Smith 1920s', 'major', num + 1 ]).concat(
+		majorOnly ? [] :
+		['swords', 'wands', 'cups', 'pentacles']
+		.map(suite => [...Array(13).keys()].map(num => ['Rider-Waite Smith 1920s', suite, num + 1 ]))
+		.reduce((cur, acc) => acc.concat(cur), [])
+	)
 
 	let deal = []
 	while (deal.length < num) {
@@ -546,7 +548,6 @@ function dealCards() {
 	for (let card of cards) {
 		card.style.transition = '2s all';
 		card.style.transform = `translate(${50 + Math.random() * 50}em, ${20 + Math.random() * 50}em) rotate(${Math.random() * 360}deg)`;
-		console.log(card.style.transform);
 		$('.viewport').style.overflow = 'hidden';
 	}
 	setTimeout(() => {
